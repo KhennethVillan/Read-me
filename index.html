@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Special Invitation</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+body{
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+text-align:center;
+padding:20px;
+overflow:hidden;
+}
+.card{
+background:white;
+padding:40px;
+border-radius:20px;
+box-shadow:0 15px 40px rgba(0,0,0,0.2);
+max-width:600px;
+width:100%;
+animation:fadeIn 1s ease-in-out;
+}
+h1{color:#ff4e50;margin-bottom:15px;}
+p{margin-bottom:15px;line-height:1.6;}
+button{
+padding:12px 25px;
+margin:8px;
+border:none;
+border-radius:30px;
+background:#ff4e50;
+color:white;
+cursor:pointer;
+transition:.3s;
+font-size:16px;
+}
+button:hover{background:#fc913a;transform:scale(1.05);}
+.hidden{display:none;}
+@keyframes fadeIn{
+from{opacity:0;transform:translateY(20px);}
+to{opacity:1;transform:translateY(0);}
+}
+canvas{
+position:fixed;
+top:0;
+left:0;
+pointer-events:none;
+}
+</style>
+</head>
+<body>
+
+<audio id="bg-music" loop>
+<source src="bewithyou.mp3" type="audio/mpeg">
+</audio>
+
+<!-- START PAGE -->
+<div class="card" id="page0">
+<h1>A Very Special Website</h1>
+
+<button onclick="startWebsite()">Start Reading →</button>
+</div>
+
+<!-- PAGE 1 -->
+<div class="card hidden" id="page1">
+<h1>Hi Lei!</h1>
+<p>
+Happy LATE Valentines Day! Hahaha! I hope you don't mind me doing something like this.
+</p>
+<p>
+Before proceeding to the next page, there are some things that I would like to request: 1. Crank the Volume up 2. Ready everything first before proceeding to the next slide (diq alam pano ibalik ih if you miss anything refresh the website) 3. And enjoy if possible hahaha!
+</p>
+<button onclick="nextPage(1)">Next →</button>
+</div>
+
+<!-- PAGE 2 -->
+<div class="card hidden" id="page2">
+<h1>What is this?</h1>
+<p>
+I'm pretty sure na aware ka naman na until now gusto pa rin kita, it's pretty much a poorly kept secret hahaha. And I know I shouldn't do this, pero my heart really really wants to
+</p>
+<p>
+When I saw you again nung birthday ni Mica, akala ko I was over you, and baka naman nam-miss ko lang yung feeling na there's someone for me. Pero I was so wrong hahaha, it turns out na ikaw pa rin pala talaga yung gusto q. Hence this.
+</p>
+<button onclick="nextPage(2)">Next →</button>
+</div>
+
+<!-- PAGE 3 -->
+<div class="card hidden" id="page3">
+<h1>So What Am I After?</h1>
+<p>
+Honestly, I'm not expecting anything in return, pero I really really wanna get this out of my chest. I don't wanna end up regretting it kase na baka pwede pa naman pero diko ginawa.
+</p>
+<p>
+I hope na hindi ka mapressure kase you can say no naman if you really don't want to ih. But I'm gonna be upfront about this.
+</p>
+<button onclick="nextPage(3)">Next →</button>
+</div>
+
+<!-- PAGE 4 -->
+<div class="card hidden" id="page4">
+<h1>So What Am I After?</h1>
+<p>
+I know it's been a really long time since we last saw each other eye to eye and we've both changed for the better during those times so...
+</p>
+<h2>
+Is it alright to ask you to go out with me again? I promise that things will be better this time around!
+</h2>
+<button onclick="nextPage(4)">Next →</button>
+</div>
+
+<!-- PAGE 5 -->
+<div class="card hidden" id="page5">
+<h1>One More Thing </h1>
+<p>
+I think this is one of those full circle moments hahahaha and I did not realize it until I got them. Soooo...
+</p>
+<p>
+Would you like to come to the Aurora Music Festival 2026 with me? You don't have to worry about the ticket since I already paid for it.
+</p>
+<button onclick="nextPage(5)">Continue →</button>
+</div>
+
+<!-- FIRST INVITATION -->
+<div class="card hidden" id="page6">
+<h1>You're Invited to Aurora Music Festival 2026</h1>
+<p>I would love to have you with me on that day.</p>
+<p><strong>📅 Date:</strong> May 03, 2026</p>
+<p><strong>⏰ Time:</strong> 01:00 PM - 11:59 PM</p>
+<p><strong>📍 Location:</strong> Clarck Global City, Pampanga</p>
+
+<div style="position:relative;height:150px;">
+<button id="yesBtn1" onclick="goToSecondInvite()">Yes, I would love to </button>
+<button id="noBtn1" onmouseover="moveNoButton()">No </button>
+</div>
+</div>
+
+<!-- SECOND INVITATION -->
+<div class="card hidden" id="page7">
+<h1>You're Invited to Aurora Music Festival 2026 (TOTOO NA TO HAHAHAHAHA SORRY FOR THATTTT!)</h1>
+<p>I would love to have you with me on that day.</p>
+<p><strong>📅 Date:</strong> May 03, 2026</p>
+<p><strong>⏰ Time:</strong> 01:00 PM - 11:59 PM</p>
+<p><strong>📍 Location:</strong> Clarck Global City, Pampanga</p>
+
+<button onclick="finalYes()">Yes </button>
+<button onclick="finalNo()">No</button>
+</div>
+
+<!-- THANK YOU -->
+<div class="card hidden" id="page8">
+<h1>Thank You!</h1>
+<p>
+Thank you for accepting my invitation. It really means a lot to me, and I can't wait to spend this special time with you.
+</p>
+<p>
+This is going to be something memorable, and I'm really happy you're part of it.
+</p>
+<p>
+<a href="https://ticket.epiceventsph.com/apps/events/ticket/241159/0_5ftDdJ9__cAt6hiKAQVg/" target="_blank">View Information</a>
+</p>
+</div>
+
+<div class="card hidden" id="page9">
+<h1>I Understand </h1>
+<p>Thank you for being honest. I still appreciate you.</p>
+</div>
+
+<canvas id="confettiCanvas"></canvas>
+
+<script>
+let yesScale = 1;
+
+function startWebsite(){
+document.getElementById('page0').classList.add('hidden');
+document.getElementById('page1').classList.remove('hidden');
+document.getElementById('bg-music').play();
+}
+
+function nextPage(current){
+document.getElementById('page'+current).classList.add('hidden');
+document.getElementById('page'+(current+1)).classList.remove('hidden');
+}
+
+function goToSecondInvite(){
+document.getElementById('page6').classList.add('hidden');
+document.getElementById('page7').classList.remove('hidden');
+}
+
+function finalYes(){
+document.getElementById('page7').classList.add('hidden');
+document.getElementById('page8').classList.remove('hidden');
+launchConfetti();
+}
+
+function finalNo(){
+document.getElementById('page7').classList.add('hidden');
+document.getElementById('page9').classList.remove('hidden');
+}
+
+function moveNoButton(){
+const noBtn=document.getElementById("noBtn1");
+const container=noBtn.parentElement;
+const maxX=container.clientWidth-noBtn.offsetWidth;
+const maxY=container.clientHeight-noBtn.offsetHeight;
+noBtn.style.position="absolute";
+noBtn.style.left=Math.random()*maxX+"px";
+noBtn.style.top=Math.random()*maxY+"px";
+yesScale+=0.15;
+document.getElementById("yesBtn1").style.transform=`scale(${yesScale})`;
+}
+
+function launchConfetti(){
+const canvas=document.getElementById("confettiCanvas");
+const ctx=canvas.getContext("2d");
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+let pieces=[];
+for(let i=0;i<200;i++){
+pieces.push({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height-canvas.height,
+size:Math.random()*8+4,
+speed:Math.random()*3+2,
+color:`hsl(${Math.random()*360},100%,50%)`
+});
+}
+function update(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+pieces.forEach(p=>{
+p.y+=p.speed;
+if(p.y>canvas.height){p.y=-10;}
+ctx.fillStyle=p.color;
+ctx.fillRect(p.x,p.y,p.size,p.size);
+});
+requestAnimationFrame(update);
+}
+update();
+}
+</script>
+
+</body>
+</html>
